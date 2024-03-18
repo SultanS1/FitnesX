@@ -42,6 +42,8 @@ android {
 
 dependencies {
 
+    implementation(project(":onboarding"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -52,4 +54,7 @@ dependencies {
 
     //viewBindingDelegate
     implementation(libs.viewBindingDelegate)
+
+    implementation(libs.cicerone)
+
 }

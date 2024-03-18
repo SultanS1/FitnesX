@@ -1,4 +1,4 @@
-package com.fitless.FitnessX
+package com.fitless.fitnessX
 
 import org.junit.Test
 

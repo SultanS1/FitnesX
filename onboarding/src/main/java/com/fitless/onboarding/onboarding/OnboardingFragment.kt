@@ -1,4 +1,4 @@
-package com.fitless.onboarding.onboarding1
+package com.fitless.onboarding.onboarding
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,13 +9,11 @@ import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.fitless.onboarding.databinding.FragmentOnboard1Binding
+import com.fitless.onboarding.databinding.FragmentOnboardingBinding
 
-class Onboard1Fragment : Fragment() {
+class OnboardingFragment : Fragment() {
 
-    private var counter = 0
-
-    private val binding: FragmentOnboard1Binding by viewBinding(CreateMethod.INFLATE)
+    private val binding: FragmentOnboardingBinding by viewBinding(CreateMethod.INFLATE)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,18 +52,14 @@ class Onboard1Fragment : Fragment() {
         // Set listeners to change text and image after animations
         slideOut.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {}
-            override fun onAnimationEnd(animation: Animation?) {
-                when(counter){
+            override fun onAnimationEnd(animation: Animation?) = Unit
 
-                }
-            }
-
-            override fun onAnimationRepeat(animation: Animation?) {}
+            override fun onAnimationRepeat(animation: Animation?) = Unit
         })
 
         // Start animation
         binding.titleTxt.startAnimation(slideOut)
-        binding.textTxt.startAnimation(slideOut)
+        binding.descriptionTxt.startAnimation(slideOut)
     }
 
 }
