@@ -42,7 +42,11 @@ android {
 
 dependencies {
 
+    implementation(project(":core"))
     implementation(project(":onboarding"))
+
+    implementation (libs.koin.core)
+    implementation (libs.koin.android)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

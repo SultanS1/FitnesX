@@ -1,25 +1,31 @@
 package com.fitless.fitnessX.router
 
-import com.fitless.fitnessX.screen.Screens
-import com.fitless.onboarding.welcomescreen.presentation.WelcomScreenRouter
+import com.fitless.core.CustomRouter
 import com.github.terrakok.cicerone.Router
+import com.github.terrakok.cicerone.androidx.FragmentScreen
 
-class AppRouter(private val router: Router): WelcomScreenRouter {
-
-    init {
-        router.replaceScreen(Screens.WelcomeScreen())
+class AppRouter(private val router: Router): CustomRouter<FragmentScreen>{
+    override fun navigateTo(screen: FragmentScreen) {
+        router.navigateTo(screen)
     }
 
-//    fun onResume() {
-//        navigatorHolder.setNavigator(AppNavigator(activity, R.id.container))
-//    }
-//
-//    fun onPause() {
-//        navigatorHolder.removeNavigator()
-//    }
+    override fun pop() {
+        router.exit()
+    }
 
-    override fun navigateToOnBoarding() {
-        router.navigateTo(Screens.OnBoardingScreen())
+    override fun replace(screen: FragmentScreen) {
+        router.replaceScreen(screen)
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+

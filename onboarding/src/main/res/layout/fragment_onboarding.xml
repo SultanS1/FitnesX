@@ -19,7 +19,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="@dimen/dp_4x"
         android:layout_height="@dimen/dp_4x"
-        style="@style/BtnCardViewStyle"
+        style="@style/ProgressBarCardViewStyle"
         app:layout_constraintBottom_toBottomOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="@+id/progressBar"
         app:layout_constraintStart_toStartOf="@+id/progressBar"
@@ -70,7 +70,6 @@
         android:layout_marginEnd="@dimen/dp_4x"
         android:layout_marginBottom="@dimen/dp_5x"
         android:indeterminateOnly="false"
-        android:progress="60"
         android:progressDrawable="@drawable/progress_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

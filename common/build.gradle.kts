@@ -34,16 +34,18 @@ android {
 
 dependencies {
 
+    implementation(libs.cicerone)
+
+    implementation (libs.koin.core)
+    implementation (libs.koin.android)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    //viewBindingDelegate
+    //viewbinding delegate
     implementation(libs.viewBindingDelegate)
-
-    implementation(libs.cicerone)
 }

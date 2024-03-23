@@ -1,6 +1,7 @@
 [versions]
 apv = "8.3.0"
 ciceroneVersion = "7.1"
+koinCore = "3.1.2"
 kotlin = "1.9.22"
 library = "8.3.0"
 androidx-junit = "1.1.5"
@@ -20,6 +21,8 @@ androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", vers
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-junit" }
 cicerone = { module = "com.github.terrakok:cicerone", version.ref = "ciceroneVersion" }
 junit = { module = "junit:junit", version.ref = "junit" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinCore" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinCore" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 viewBindingDelegate = { module = "com.github.kirich1409:viewbindingpropertydelegate-full", version.ref = "bindingDelegateVersion"}
 
