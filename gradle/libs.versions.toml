@@ -1,7 +1,7 @@
 [versions]
-apv = "8.2.2"
+apv = "8.3.0"
 kotlin = "1.9.22"
-library = "8.2.2"
+library = "8.3.0"
 androidx-junit = "1.1.5"
 appcompat = "1.6.1"
 constraintlayout = "2.1.4"
