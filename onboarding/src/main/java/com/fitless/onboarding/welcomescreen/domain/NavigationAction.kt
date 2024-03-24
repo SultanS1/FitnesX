@@ -2,6 +2,6 @@ package com.fitless.onboarding.welcomescreen.domain
 
 import com.fitless.core.BaseAction
 
-sealed class NavigationAction: BaseAction{
-    data object GetStartedBtnClicked: NavigationAction()
+sealed interface NavigationAction: BaseAction{
+    data object NavigateToNextFragmentAction: NavigationAction
 }

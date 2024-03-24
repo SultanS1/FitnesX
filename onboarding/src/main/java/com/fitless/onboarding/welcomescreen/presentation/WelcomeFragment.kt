@@ -5,12 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.fitless.onboarding.R
 import com.fitless.onboarding.databinding.FragmentWelcomeBinding
-import com.fitless.onboarding.welcomescreen.domain.WelcomePageReducer
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class WelcomeFragment : Fragment(R.layout.fragment_welcome) {

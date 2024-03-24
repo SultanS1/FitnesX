@@ -11,10 +11,13 @@ import com.github.terrakok.cicerone.androidx.AppNavigator
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val binding: ActivityMainBinding by viewBinding(R.id.activity_main)
+
     private val appNavigator by lazy { AppNavigator(this, R.id.container) }
 
     private val appInstance = MyApplication.INSTANCE
+
     private val navigatorHolder = appInstance.navigatorHolder
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)

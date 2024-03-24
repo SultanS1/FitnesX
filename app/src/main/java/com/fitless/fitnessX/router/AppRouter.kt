@@ -5,6 +5,7 @@ import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 class AppRouter(private val router: Router): CustomRouter<FragmentScreen>{
+
     override fun navigateTo(screen: FragmentScreen) {
         router.navigateTo(screen)
     }
@@ -18,14 +19,3 @@ class AppRouter(private val router: Router): CustomRouter<FragmentScreen>{
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-

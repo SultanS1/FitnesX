@@ -10,7 +10,7 @@ class WelcomePageReducer(private val router: CustomRouter<FragmentScreen>): Base
 
     override fun reduce(currentState: NavigationViewState, action: NavigationAction): BaseState {
         return when(action){
-            is NavigationAction.GetStartedBtnClicked -> {
+            is NavigationAction.NavigateToNextFragmentAction -> {
                 router.replace(Screens.onboardingFragment())
                 currentState.copy(navigated = true)
             }
