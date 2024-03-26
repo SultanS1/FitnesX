@@ -9,11 +9,12 @@ import kotlinx.coroutines.flow.StateFlow
 
 class WelcomeViewModel(private val reducer: WelcomePageReducer) : ViewModel() {
 
-    private val _viewState = MutableStateFlow(NavigationViewState(navigated = false))
+    private val _viewState = MutableStateFlow<NavigationViewState>(reducer.initialState)
+
     val viewState: StateFlow<NavigationViewState> = _viewState
 
     fun getStartedButtonClicked() {
-        val newState = reducer.reduce(_viewState.value, NavigationAction.NavigateToNextFragmentAction)
-        _viewState.value = newState as NavigationViewState
+        reducer.handleAction(NavigationAction.NavigateToNextFragmentAction)
     }
+
 }

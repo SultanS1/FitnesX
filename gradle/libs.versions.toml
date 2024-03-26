@@ -1,16 +1,16 @@
 [versions]
-apv = "8.3.0"
+apv = "8.3.1"
 ciceroneVersion = "7.1"
 koinCore = "3.1.2"
 kotlin = "1.9.22"
-library = "8.3.0"
+library = "8.3.1"
 androidx-junit = "1.1.5"
 appcompat = "1.6.1"
 constraintlayout = "2.1.4"
-core-ktx = "1.10.1"
+core-ktx = "1.12.0"
 espresso-core = "3.5.1"
 junit = "4.13.2"
-material = "1.9.0"
+material = "1.11.0"
 bindingDelegateVersion = "1.5.9"
 
 [libraries]

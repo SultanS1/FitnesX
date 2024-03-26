@@ -5,7 +5,7 @@ import android.os.Bundle
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.fitless.FitnessX.R
 import com.fitless.FitnessX.databinding.ActivityMainBinding
-import com.fitless.fitnessX.application.MyApplication
+import com.fitless.fitnessX.application.MainApp
 import com.github.terrakok.cicerone.androidx.AppNavigator
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val appNavigator by lazy { AppNavigator(this, R.id.container) }
 
-    private val appInstance = MyApplication.INSTANCE
+    private val appInstance = MainApp.INSTANCE
 
     private val navigatorHolder = appInstance.navigatorHolder
 

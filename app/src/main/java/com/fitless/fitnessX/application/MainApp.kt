@@ -1,12 +1,13 @@
 package com.fitless.fitnessX.application
 
 import android.app.Application
-import com.fitless.fitnessX.appModule
+import com.fitless.fitnessX.di.appModule
 import com.fitless.onboarding.di.welcomePageModule
 import com.github.terrakok.cicerone.Cicerone
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
-class MyApplication : Application(){
+
+class MainApp : Application(){
 
     private val cicerone = Cicerone.create()
 
@@ -18,13 +19,14 @@ class MyApplication : Application(){
         super.onCreate()
         INSTANCE = this
         startKoin {
-            androidContext(this@MyApplication)
+            androidContext(this@MainApp)
             modules(appModule, welcomePageModule)
         }
     }
 
     companion object {
-        internal lateinit var INSTANCE: MyApplication
+        internal lateinit var INSTANCE: MainApp
             private set
     }
+
 }
