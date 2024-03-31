@@ -1,4 +1,3 @@
 package com.fitless.core
 
-interface BaseAction {
-}
+interface BaseAction

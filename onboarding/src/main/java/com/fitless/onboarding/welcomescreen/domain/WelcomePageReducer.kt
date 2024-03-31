@@ -2,12 +2,11 @@ package com.fitless.onboarding.welcomescreen.domain
 
 import com.fitless.core.BaseAction
 import com.fitless.core.BaseReducer
-import com.fitless.core.BaseState
-import com.fitless.core.CustomRouter
+import com.fitless.core.NavigationRouter
 import com.fitless.onboarding.navigationScreens.Screens
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
-class WelcomePageReducer(private val router: CustomRouter<FragmentScreen>): BaseReducer<NavigationViewState, NavigationSideEffect>() {
+class WelcomePageReducer(private val router: NavigationRouter<FragmentScreen>): BaseReducer<NavigationViewState, NavigationSideEffect>() {
 
     override val initialState: NavigationViewState = NavigationViewState(navigated = false)
 
