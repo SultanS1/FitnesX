@@ -5,20 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".welcomescreen.WelcomeFragment"
+    tools:context=".welcomescreen.presentation.WelcomeFragment"
     android:gravity="bottom">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@drawable/welcome_icon"
+        android:src="@drawable/ic_welcome"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/getSartedBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,7 +26,6 @@
         android:layout_marginBottom="40dp"
         android:background="@drawable/rounded_btn_corner"
         android:fontFamily="@font/poppins_extrabold"
-        android:padding="18dp"
         android:text="@string/get_started"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -34,7 +33,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
 

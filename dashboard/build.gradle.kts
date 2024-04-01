@@ -47,4 +47,5 @@ dependencies {
 
     //viewbinding delegate
     implementation(libs.viewBindingDelegate)
+
 }
