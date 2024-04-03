@@ -1,5 +1,7 @@
 <resources>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //OnBoarding feature string resources
     <string name="get_started">Get Started</string>
     <string name="onboarding_text1">Don\'t worry if you have trouble determining your goals, We can help you determine your goals and track your goals</string>
     <string name="onboarding_title1">Track Your Goal</string>
@@ -9,8 +11,26 @@
 
     <string name="onboarding_title3">Eat Well</string>
     <string name="onboarding_text3">Let\'s start a healthy lifestyle with us, we can determine your diet every day. healthy eating is fun</string>
-
     <string name="onboarding_title4">Improve Sleep  Quality</string>
     <string name="onboarding_text4">Improve the quality of your sleep with us, good quality sleep can bring a good mood in the morning</string>
+    <string name="hey_there">Hey there,</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="privacy_policy">By continuing you accept our Privacy Policy and Term of Use</string>
+    <string name="or">Or</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login">Login</string>
+    <string name="registration">Register</string>
+    <string name="let_s_complete_your_profile">Let’s complete your profile</string>
+    <string name="it_will_help_us_to_know_more_about_you">It will help us to know more about you!</string>
+    <string name="choose_gender">Choose Gender</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="your_weight">Your weight</string>
+    <string name="kg">KG</string>
+    <string name="cm">CM</string>
+    <string name="next"><![CDATA[Next >]]></string>
 
 </resources>

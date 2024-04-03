@@ -19,18 +19,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/getSartedBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/rounded_btn_corner"
+        android:id="@+id/getStartedBtn"
+        style="@style/MainButtonStyle"
         android:fontFamily="@font/poppins_extrabold"
+        android:background="@drawable/rounded_btn_corner"
         android:text="@string/get_started"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/dp_5x"
+        android:layout_marginHorizontal="@dimen/_30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

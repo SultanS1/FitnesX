@@ -3,4 +3,11 @@
     <color name="blue_linear">#94ADFD</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="app_text_default">#1D1617</color>
+    <color name="transparent">#00000000</color>
+    <color name="hint_color">#ADA4A5</color>
+    <color name="text_link_color">#C78DEF</color>
+    <color name="edit_text_bg">#F7F8F8</color>
+    <color name="lines_bg">#DDDADA</color>
+    <color name="purple_linear">#D393E6</color>
 </resources>
