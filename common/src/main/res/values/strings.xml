@@ -21,7 +21,7 @@
     <string name="password">Password</string>
     <string name="privacy_policy">By continuing you accept our Privacy Policy and Term of Use</string>
     <string name="or">Or</string>
-    <string name="already_have_an_account">Already have an account?</string>
+    <string name="already_have_an_account">Already have an account? </string>
     <string name="login">Login</string>
     <string name="registration">Register</string>
     <string name="let_s_complete_your_profile">Let’s complete your profile</string>
@@ -32,5 +32,17 @@
     <string name="kg">KG</string>
     <string name="cm">CM</string>
     <string name="next"><![CDATA[Next >]]></string>
+
+    <string name="what_is_your_goal">What is your goal ?</string>
+    <string name="it_will_help_us_to_choose_a_best_program_for_you">It will help us to choose a best program for you</string>
+    <string name="confirm">Confirm</string>
+    <string name="improve_shape">Improve Shape</string>
+    <string name="guide">I have a low amount of body fat and need / want to build more muscle</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="don_t_have_an_account_yet">Don’t have an account yet? </string>
+    <string name="welcome_stefani">Welcome, Stefani</string>
+    <string name="you_are_all_set_now_let_s_reach_your_goals_together_with_us">You are all set now, let’s reach your goals together with us</string>
+    <string name="go_to_home">Go to Home</string>
 
 </resources>

@@ -10,10 +10,12 @@ import android.view.animation.TranslateAnimation
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.fitless.onboarding.databinding.FragmentOnboardingBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OnboardingFragment : Fragment() {
 
     private val binding: FragmentOnboardingBinding by viewBinding(CreateMethod.INFLATE)
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,41 +27,9 @@ class OnboardingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.nextBtn.setOnClickListener {
+        }
 
-    }
-
-    private fun changeScreen(){
-        // Slide out animation
-        val slideOut = TranslateAnimation(
-            Animation.RELATIVE_TO_SELF, 0f,
-            Animation.RELATIVE_TO_SELF, -1f,
-            Animation.RELATIVE_TO_SELF, 0f,
-            Animation.RELATIVE_TO_SELF, 0f
-        )
-        slideOut.duration = 500
-        slideOut.fillAfter = true
-
-        // Slide in animation
-        val slideIn = TranslateAnimation(
-            Animation.RELATIVE_TO_SELF, 1f,
-            Animation.RELATIVE_TO_SELF, 0f,
-            Animation.RELATIVE_TO_SELF, 0f,
-            Animation.RELATIVE_TO_SELF, 0f
-        )
-        slideIn.duration = 500
-        slideIn.fillAfter = true
-
-        // Set listeners to change text and image after animations
-        slideOut.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(animation: Animation?) {}
-            override fun onAnimationEnd(animation: Animation?) = Unit
-
-            override fun onAnimationRepeat(animation: Animation?) = Unit
-        })
-
-        // Start animation
-        binding.titleTxt.startAnimation(slideOut)
-        binding.descriptionTxt.startAnimation(slideOut)
     }
 
 }

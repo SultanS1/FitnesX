@@ -44,6 +44,7 @@ dependencies {
 
     implementation(project(":core"))
     implementation(project(":onboarding"))
+    implementation(project(":authorization"))
     implementation(project(":common"))
 
     implementation (libs.koin.core)
