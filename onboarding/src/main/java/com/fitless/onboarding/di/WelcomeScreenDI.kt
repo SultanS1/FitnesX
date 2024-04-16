@@ -2,7 +2,8 @@ package com.fitless.onboarding.di
 
 
 import com.fitless.core.NavigationRouter
-import com.fitless.onboarding.onboarding.OnBoardingViewModel
+import com.fitless.onboarding.onboarding.domain.OnBoardingReducer
+import com.fitless.onboarding.onboarding.presentation.OnBoardingViewModel
 import com.fitless.onboarding.welcomescreen.domain.WelcomePageReducer
 import com.fitless.onboarding.welcomescreen.presentation.WelcomeViewModel
 import com.github.terrakok.cicerone.androidx.FragmentScreen
@@ -14,5 +15,10 @@ val welcomePageModule = module {
 
     single { WelcomePageReducer(get<NavigationRouter<FragmentScreen>>()) }
 
-    viewModel{ WelcomeViewModel(get()) }
+    single { OnBoardingReducer(get<NavigationRouter<FragmentScreen>>()) }
+
+    viewModel { WelcomeViewModel(get()) }
+
+    viewModel { OnBoardingViewModel(get())}
+
 }

@@ -6,13 +6,13 @@ import com.fitless.core.NavigationRouter
 import com.fitless.onboarding.navigationScreens.Screens
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
-class WelcomePageReducer(private val router: NavigationRouter<FragmentScreen>): BaseReducer<NavigationViewState, NavigationSideEffect>() {
+class WelcomePageReducer(private val router: NavigationRouter<FragmentScreen>): BaseReducer<WelcomePageViewState, WelcomePageSideEffect>() {
 
-    override val initialState: NavigationViewState = NavigationViewState(navigated = false)
+    override val initialState: WelcomePageViewState = WelcomePageViewState(navigated = false)
 
     override fun handleAction(action: BaseAction) {
         when (action) {
-            is NavigationAction.NavigateToNextFragmentAction -> {
+            is WelcomePageAction.NavigateToNextFragmentAction -> {
                 router.replace(Screens.onboardingFragment())
                 initialState.copy(navigated = true)
             }
