@@ -1,8 +1,8 @@
 package com.fitless.onboarding.welcomescreen.domain
 
-import com.fitless.core.BaseAction
-import com.fitless.core.BaseReducer
-import com.fitless.core.NavigationRouter
+import com.fitless.core.architecture.BaseAction
+import com.fitless.core.architecture.BaseReducer
+import com.fitless.core.navigation.NavigationRouter
 import com.fitless.onboarding.navigationScreens.Screens
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 

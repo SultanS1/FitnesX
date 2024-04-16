@@ -1,4 +1,4 @@
-package com.fitless.core
+package com.fitless.core.navigation
 
 /**CustomRouter interface defines a contract for routing navigation within an application.
  * It provides methods to navigate to, pop, and replace screens or destinations within the application.*/

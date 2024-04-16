@@ -1,0 +1,4 @@
+interface InjectionModule {
+
+fun create() : Module //koin
+}

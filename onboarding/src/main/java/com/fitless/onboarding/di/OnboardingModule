@@ -1,0 +1,10 @@
+object OnboardingModule : InjectionModule {
+
+override create() = module {
+
+//create deps
+
+
+}
+
+}
