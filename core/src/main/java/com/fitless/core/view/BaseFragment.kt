@@ -10,14 +10,15 @@ import com.fitless.core.architecture.BaseReducer
 import com.fitless.core.architecture.BaseState
 import kotlinx.coroutines.launch
 
-abstract class BaseFragment<State : BaseState, Action : BaseAction , Binding : ViewBinding> : Fragment() {
-	
+
+abstract class BaseFragment<State : BaseState, Action : BaseAction , Binding : ViewBinding>(layoutId: Int) : Fragment(layoutId) {
+
 	abstract val binding: Binding
-	
+
 	abstract val reducer: BaseReducer<State, Action>
-	
+
 	abstract fun render(state: State)
-	
+
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		viewLifecycleOwner.lifecycleScope.launch {
@@ -28,5 +29,5 @@ abstract class BaseFragment<State : BaseState, Action : BaseAction , Binding : V
 			}
 		}
 	}
-	
+
 }

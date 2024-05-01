@@ -18,7 +18,7 @@ class OnBoardingPageFragment : Fragment(R.layout.fragment_on_boarding_page) {
 
     private val binding: FragmentOnBoardingPageBinding by viewBinding(CreateMethod.INFLATE)
 
-    private val guideAdapter: GuideRvAdapter by lazy { GuideRvAdapter() }
+    private val guideAdapter: GuideAdapter by lazy { GuideAdapter() }
 
     private val pageTransformer: CompositePageTransformer by lazy { CompositePageTransformer() }
 
@@ -32,17 +32,16 @@ class OnBoardingPageFragment : Fragment(R.layout.fragment_on_boarding_page) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        guideAdapterSetUp()
+        adapterSetUp()
 
     }
 
-    private fun guideAdapterSetUp(){
+    private fun adapterSetUp(){
         binding.guideViewPager.adapter = guideAdapter
         guideAdapter.setList(onboardingGuide)
 
