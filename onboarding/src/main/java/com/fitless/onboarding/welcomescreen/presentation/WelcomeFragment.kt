@@ -12,9 +12,9 @@ class WelcomeFragment : BaseFragment<WelcomePageViewState, WelcomePageAction, Fr
 
     override val binding: FragmentWelcomeBinding by viewBinding()
 
-    override val reducer: WelcomePageReducer by viewModel<WelcomePageReducer>()
+    override val reducer: WelcomePageReducer by viewModel()
     override fun render(state: WelcomePageViewState) {
-        TODO("Not yet implemented")
+    
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

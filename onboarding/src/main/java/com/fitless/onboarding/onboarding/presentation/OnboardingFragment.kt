@@ -10,17 +10,18 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OnboardingFragment :
 	BaseFragment<OnBoardingViewState, OnBoardingAction, FragmentOnboardingBinding>(R.layout.fragment_onboarding) {
-
-    override val binding: FragmentOnboardingBinding by viewBinding()
-
-    override val reducer: OnBoardingReducer by viewModel()
-    override fun render(state: OnBoardingViewState) {
-        binding.progressBar.progress = state.progress
-    }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.nextBtn.setOnClickListener {
-            reducer.submitAction(action = OnBoardingAction.OnBoardingStep)
-        }
-    }
+	
+	override val binding: FragmentOnboardingBinding by viewBinding()
+	
+	override val reducer: OnBoardingReducer by viewModel()
+	override fun render(state: OnBoardingViewState) {
+		binding.progressBar.progress = state.progress
+	}
+	
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+		binding.nextBtn.setOnClickListener {
+			reducer.submitAction(action = OnBoardingAction.OnBoardingStep)
+		}
+	}
 }

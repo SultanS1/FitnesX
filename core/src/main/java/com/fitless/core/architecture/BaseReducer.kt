@@ -7,8 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 
-abstract class BaseReducer<STATE : BaseState, Action : BaseAction>(private val initialState: STATE) :
-	ViewModel() {
+abstract class BaseReducer<STATE : BaseState, Action : BaseAction>(private val initialState: STATE) : ViewModel() {
 	
 	private val coroutineScope =
 		CoroutineScope(Dispatchers.Main.immediate + SupervisorJob() + CoroutineExceptionHandler { coroutineContext, throwable ->
@@ -23,17 +22,20 @@ abstract class BaseReducer<STATE : BaseState, Action : BaseAction>(private val i
 	
 	val stateValue get() = state.value
 	
+	abstract fun submitAction(action: Action)
+	
 	protected fun postState(currentState: (currentState: STATE) -> STATE) {
 		_state.value = currentState(state.value)
 	}
 	
 	protected fun postSideEffect(sideEffect: BaseSideEffect) {
-		_sideEffect.tryEmit(sideEffect)
+		launch {
+			_sideEffect.tryEmit(sideEffect)
+		}
 	}
 	
-	abstract fun submitAction(action: Action)
 	
-	fun launch(operation: suspend () -> Unit) = coroutineScope.launch {
+	protected fun launch(operation: suspend () -> Unit) = coroutineScope.launch {
 		operation()
 	}
 	
