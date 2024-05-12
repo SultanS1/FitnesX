@@ -22,7 +22,8 @@ class OnBoardingPageFragment : Fragment(R.layout.fragment_on_boarding_page) {
 
     private val pageTransformer: CompositePageTransformer by lazy { CompositePageTransformer() }
 
-    private val onboardingGuide: List<GuideItem> = listOf(
+    //test
+    private val testData: List<GuideItem> = listOf(
         GuideItem("Improve Shape", "I have a low amount of body fat and need / want to build more muscle", R.drawable.ic_guide1),
         GuideItem("Lean & Tone", "I’m “skinny fat”. look thin but have no shape. I want to add learn muscle in the right way", R.drawable.ic_guide2),
         GuideItem("Lose a Fat", "I have over 20 lbs to lose. I want to drop all this fat and gain muscle mass", R.drawable.ic_guide3),
@@ -43,7 +44,7 @@ class OnBoardingPageFragment : Fragment(R.layout.fragment_on_boarding_page) {
 
     private fun adapterSetUp(){
         binding.guideViewPager.adapter = guideAdapter
-        guideAdapter.setList(onboardingGuide)
+        guideAdapter.setList(testData)
 
         binding.guideViewPager.clipToPadding = false
         binding.guideViewPager.clipChildren = false

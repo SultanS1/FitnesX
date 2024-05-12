@@ -8,13 +8,13 @@ import com.fitless.onboarding.R
 import com.fitless.onboarding.databinding.FragmentWelcomeBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class WelcomeFragment : BaseFragment<WelcomePageViewState, WelcomePageAction, FragmentWelcomeBinding>(R.layout.fragment_welcome) {
+class WelcomeFragment :
+    BaseFragment<WelcomePageViewState, WelcomePageAction, WelcomePageSideEffect,FragmentWelcomeBinding>(R.layout.fragment_welcome) {
 
     override val binding: FragmentWelcomeBinding by viewBinding()
 
     override val reducer: WelcomePageReducer by viewModel()
     override fun render(state: WelcomePageViewState) {
-    
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

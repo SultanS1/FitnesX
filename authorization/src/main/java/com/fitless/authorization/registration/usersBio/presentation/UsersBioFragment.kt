@@ -1,4 +1,4 @@
-package com.fitless.authorization.registration.registrationMain
+package com.fitless.authorization.registration.usersBio.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.fitless.authorization.R
-import com.fitless.authorization.databinding.FragmentRegistrationBinding
+import com.fitless.authorization.databinding.FragmentUsersBioBinding
 
-class RegistrationFragment : Fragment(R.layout.fragment_registration) {
+class UsersBioFragment : Fragment(R.layout.fragment_users_bio) {
 
-    private val binding: FragmentRegistrationBinding by viewBinding(CreateMethod.INFLATE)
+    private val binding: FragmentUsersBioBinding by viewBinding(CreateMethod.INFLATE)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

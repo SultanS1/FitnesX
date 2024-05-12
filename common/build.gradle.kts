@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.library)
     alias(libs.plugins.jetBrainsKotlin)
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
 
 android {
@@ -37,6 +38,7 @@ dependencies {
 
     api(libs.koin.core)
     api(libs.koin.android)
+    api(libs.viewModelLifeCycle)
 
     api(libs.androidx.core.ktx)
     api(libs.androidx.appcompat)
@@ -44,6 +46,8 @@ dependencies {
     api(libs.junit)
     api(libs.androidx.junit)
     api(libs.androidx.espresso.core)
+    api(libs.protoStore)
+    api(libs.kotlinx.serialization.json)
 
     //viewbinding delegate
     api(libs.viewBindingDelegate)

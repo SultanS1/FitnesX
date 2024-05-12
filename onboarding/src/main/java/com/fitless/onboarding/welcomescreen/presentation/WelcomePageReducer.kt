@@ -7,7 +7,7 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 class WelcomePageReducer(
     private val router: NavigationRouter<FragmentScreen>,
-) : BaseReducer<WelcomePageViewState, WelcomePageAction>(
+) : BaseReducer<WelcomePageViewState, WelcomePageAction, WelcomePageSideEffect>(
     initialState = WelcomePageViewState(navigated = false)
 ) {
 

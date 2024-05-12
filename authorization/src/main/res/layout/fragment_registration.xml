@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="#FFFFFF"
     android:paddingHorizontal="@dimen/_30dp"
-    tools:context=".registration.registrationMain.RegistrationFragment">
+    tools:context=".registration.registration.presentation.RegistrationFragment">
 
     <TextView
         android:layout_width="wrap_content"
@@ -112,6 +112,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
+        android:id="@+id/privacyAgreement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/privacy_policy"
@@ -126,7 +127,7 @@
         android:layout_weight="1"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginBtn"
+        android:id="@+id/registerBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/MainButtonStyle"
@@ -219,7 +220,7 @@
             />
 
         <TextView
-            android:id="@+id/registerTxtBtn"
+            android:id="@+id/loginTxtBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login"

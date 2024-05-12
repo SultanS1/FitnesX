@@ -7,7 +7,7 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 class OnBoardingReducer(
 	private val router: NavigationRouter<FragmentScreen>,
-) : BaseReducer<OnBoardingViewState, OnBoardingAction>(
+) : BaseReducer<OnBoardingViewState, OnBoardingAction, OnBoardingSideEffect>(
 	initialState = OnBoardingViewState(
 		onboardingPassed = 1, progress = 25
 	)

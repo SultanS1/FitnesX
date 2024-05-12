@@ -9,7 +9,7 @@ import com.fitless.onboarding.databinding.FragmentOnboardingBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OnboardingFragment :
-	BaseFragment<OnBoardingViewState, OnBoardingAction, FragmentOnboardingBinding>(R.layout.fragment_onboarding) {
+	BaseFragment<OnBoardingViewState, OnBoardingAction, OnBoardingSideEffect, FragmentOnboardingBinding>(R.layout.fragment_onboarding) {
 	
 	override val binding: FragmentOnboardingBinding by viewBinding()
 	

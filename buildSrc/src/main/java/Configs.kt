@@ -1,5 +1,8 @@
 import org.gradle.api.JavaVersion
 
+/**
+ * Configuration object containing various settings for the project.
+ */
 object Configs {
 
     val compileSdk = 34
