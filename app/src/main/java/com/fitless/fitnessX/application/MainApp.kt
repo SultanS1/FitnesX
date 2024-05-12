@@ -8,6 +8,10 @@ import com.github.terrakok.cicerone.Cicerone
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
+/**
+ * The main application class for the FitnessX app.
+ * This class initializes the Cicerone navigator and sets up Koin dependency injection.
+ */
 class MainApp : Application(){
 
     private val cicerone = Cicerone.create()

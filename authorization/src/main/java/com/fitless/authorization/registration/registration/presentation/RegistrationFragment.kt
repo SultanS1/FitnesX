@@ -8,6 +8,10 @@ import com.fitless.authorization.databinding.FragmentRegistrationBinding
 import com.fitless.core.view.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+/**
+ * Fragment responsible for user registration.
+ * This fragment displays registration fields and handles user input.
+ */
 class RegistrationFragment :
     BaseFragment<RegistrationState, RegistrationAction, RegistrationSideEffect, FragmentRegistrationBinding>(R.layout.fragment_registration) {
 
@@ -31,6 +35,9 @@ class RegistrationFragment :
 
     }
 
+    /**
+     * Sets click listeners for UI buttons.
+     */
     private fun setClickListeners(){
 
         binding.loginTxtBtn.setOnClickListener { reducer.submitAction(RegistrationAction.Login) }

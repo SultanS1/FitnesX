@@ -8,6 +8,13 @@ import com.fitless.onboarding.R
 import com.fitless.onboarding.databinding.FragmentOnboardingBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+/**
+ * Fragment class for the onboarding screen.
+ * Extends [BaseFragment] to handle UI rendering and user interactions.
+ *
+ * @property binding Instance of [FragmentOnboardingBinding] for accessing views.
+ * @property reducer Instance of [OnBoardingReducer] for managing state and actions.
+ */
 class OnboardingFragment :
 	BaseFragment<OnBoardingViewState, OnBoardingAction, OnBoardingSideEffect, FragmentOnboardingBinding>(R.layout.fragment_onboarding) {
 	

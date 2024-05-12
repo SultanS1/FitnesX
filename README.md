@@ -19,16 +19,16 @@ Clean Architecture. For navigation used Cicerone library.
 ## Screenshots
 
 <div style="display: flex;">
-    <img src="images/getStarted.jpg" alt="Screenshot 1" style="width: 50%;">
-    <img src="images/onboarding.jpg" alt="Screenshot 2" style="width: 50%;">
+    <img src="images/getStarted.jpg" alt="Screenshot 1" style="width: 30%;">
+    <img src="images/onboarding.jpg" alt="Screenshot 2" style="width: 30%;">
 </div>
 <div style="display: flex;">
-    <img src="images/onboarding2.jpg" alt="Screenshot 1" style="width: 50%;">
-    <img src="images/registration.jpg" alt="Screenshot 2" style="width: 50%;">
+    <img src="images/onboarding2.jpg" alt="Screenshot 1" style="width: 30%;">
+    <img src="images/registration.jpg" alt="Screenshot 2" style="width: 30%;">
 </div>
 <div style="display: flex;">
-    <img src="images/bio.jpg" alt="Screenshot 1" style="width: 50%;">
-    <img src="images/login.jpg" alt="Screenshot 2" style="width: 50%;">
+    <img src="images/bio.jpg" alt="Screenshot 1" style="width: 30%;">
+    <img src="images/login.jpg" alt="Screenshot 2" style="width: 30%;">
 </div>
 
 ## Contributing
