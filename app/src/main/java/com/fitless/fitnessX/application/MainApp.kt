@@ -1,12 +1,17 @@
 package com.fitless.fitnessX.application
 
 import android.app.Application
+import com.fitless.authorization.di.authModule
 import com.fitless.fitnessX.di.appModule
-import com.fitless.onboarding.di.welcomePageModule
+import com.fitless.onboarding.di.onboardingModule
 import com.github.terrakok.cicerone.Cicerone
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
+/**
+ * The main application class for the FitnessX app.
+ * This class initializes the Cicerone navigator and sets up Koin dependency injection.
+ */
 class MainApp : Application(){
 
     private val cicerone = Cicerone.create()
@@ -20,7 +25,7 @@ class MainApp : Application(){
         INSTANCE = this
         startKoin {
             androidContext(this@MainApp)
-            modules(appModule, welcomePageModule)
+            modules(appModule, onboardingModule, authModule)
         }
     }
 

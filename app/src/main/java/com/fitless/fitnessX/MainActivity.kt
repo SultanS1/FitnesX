@@ -8,6 +8,10 @@ import com.fitless.FitnessX.databinding.ActivityMainBinding
 import com.fitless.fitnessX.application.MainApp
 import com.github.terrakok.cicerone.androidx.AppNavigator
 
+/**
+ * The main activity of the FitnessX app.
+ * This activity hosts the main navigation container and sets up the navigation.
+ */
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val binding: ActivityMainBinding by viewBinding(R.id.activity_main)

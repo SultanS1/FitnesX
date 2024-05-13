@@ -1,35 +1,39 @@
 package com.fitless.onboarding.welcomescreen.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.fitless.core.view.BaseFragment
 import com.fitless.onboarding.R
 import com.fitless.onboarding.databinding.FragmentWelcomeBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
+/**
+ * Fragment for displaying the welcome page.
+ */
+class WelcomeFragment :
+    BaseFragment<WelcomePageViewState, WelcomePageAction, WelcomePageSideEffect,FragmentWelcomeBinding>(R.layout.fragment_welcome) {
 
-    // reflection API and ViewBinding.bind are used under the hood
-    private val binding: FragmentWelcomeBinding by viewBinding(CreateMethod.INFLATE)
+    override val binding: FragmentWelcomeBinding by viewBinding()
 
-    private val viewModel by viewModel<WelcomeViewModel>()
+    override val reducer: WelcomePageReducer by viewModel()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return binding.root
+    /**
+     * Renders the UI based on the current state.
+     * @param state The current state of the welcome page.
+     */
+    override fun render(state: WelcomePageViewState) {
     }
 
+    /**
+     * Called immediately after the view is created.
+     * @param view The created view.
+     * @param savedInstanceState If non-null, this fragment is being re-constructed from a previous saved state.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.getSartedBtn.setOnClickListener {
-            viewModel.getStartedButtonClicked()
+        binding.getStartedBtn.setOnClickListener {
+            reducer.submitAction(WelcomePageAction.NavigateToNextFragmentAction)
         }
     }
 

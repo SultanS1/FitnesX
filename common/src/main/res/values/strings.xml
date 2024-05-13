@@ -1,5 +1,7 @@
 <resources>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //OnBoarding feature string resources
     <string name="get_started">Get Started</string>
     <string name="onboarding_text1">Don\'t worry if you have trouble determining your goals, We can help you determine your goals and track your goals</string>
     <string name="onboarding_title1">Track Your Goal</string>
@@ -9,8 +11,38 @@
 
     <string name="onboarding_title3">Eat Well</string>
     <string name="onboarding_text3">Let\'s start a healthy lifestyle with us, we can determine your diet every day. healthy eating is fun</string>
-
     <string name="onboarding_title4">Improve Sleep  Quality</string>
     <string name="onboarding_text4">Improve the quality of your sleep with us, good quality sleep can bring a good mood in the morning</string>
+    <string name="hey_there">Hey there,</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="privacy_policy">By continuing you accept our Privacy Policy and Term of Use</string>
+    <string name="or">Or</string>
+    <string name="already_have_an_account">Already have an account? </string>
+    <string name="login">Login</string>
+    <string name="registration">Register</string>
+    <string name="let_s_complete_your_profile">Let’s complete your profile</string>
+    <string name="it_will_help_us_to_know_more_about_you">It will help us to know more about you!</string>
+    <string name="choose_gender">Choose Gender</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="your_weight">Your weight</string>
+    <string name="kg">KG</string>
+    <string name="cm">CM</string>
+    <string name="next"><![CDATA[Next >]]></string>
+
+    <string name="what_is_your_goal">What is your goal ?</string>
+    <string name="it_will_help_us_to_choose_a_best_program_for_you">It will help us to choose a best program for you</string>
+    <string name="confirm">Confirm</string>
+    <string name="improve_shape">Improve Shape</string>
+    <string name="guide">I have a low amount of body fat and need / want to build more muscle</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="don_t_have_an_account_yet">Don’t have an account yet? </string>
+    <string name="welcome_stefani">Welcome, Stefani</string>
+    <string name="you_are_all_set_now_let_s_reach_your_goals_together_with_us">You are all set now, let’s reach your goals together with us</string>
+    <string name="go_to_home">Go to Home</string>
 
 </resources>

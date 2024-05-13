@@ -1,45 +1,39 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.library)
+    alias(libs.plugins.jetBrainsKotlin)
 }
 
 android {
     namespace = "com.fitless.core"
-    compileSdk = 34
+    compileSdk = Configs.compileSdk
 
     defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
+        minSdk = Configs.defaultConfig.minSdk
+        testInstrumentationRunner = Configs.defaultConfig.testInstrumentationRunner
+        consumerProguardFiles(file(Configs.defaultConfig.consumerProguardFiles))
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = Configs.buildTypes.release.isMinifyEnabled
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                file(Configs.buildTypes.release.proguardFiles.androidOptimize),
+                file(Configs.buildTypes.release.proguardFiles.customRules)
             )
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = Configs.compileOptions.sourceCompatibility
+        targetCompatibility = Configs.compileOptions.targetCompatibility
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Configs.kotlinOptions.jvmTarget
+    }
+    buildFeatures {
+        viewBinding = Configs.buildFeatures.viewBinding
     }
 }
 
 dependencies {
-
     implementation(project(":common"))
-
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
