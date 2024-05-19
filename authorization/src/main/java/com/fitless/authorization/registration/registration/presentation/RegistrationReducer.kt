@@ -23,17 +23,21 @@ class RegistrationReducer(
     override fun submitAction(action: RegistrationAction) {
         when(action){
             is RegistrationAction.Register -> {
-                postState { state ->
-                    state.copy(
-                        name = state.name,
-                        surname = state.surname,
-                        email = state.email,
-                        password = state.password,
-                        policy = state.policy,
-                        registered = state.registered
-                    )
+                if(validName(action.name) && validSurname(action.surname) && validEmail(action.email) && validPassword(action.password)){
+                    postState { state ->
+                        state.copy(
+                            name = state.name,
+                            surname = state.surname,
+                            email = state.email,
+                            password = state.password,
+                            policy = state.policy,
+                            registered = state.registered
+                        )
+                    }
+                    router.navigateTo(Screens.usersBioFragment())
+                }else{
+                    postSideEffect(RegistrationSideEffect.EmptyFields("Empty Fields"))
                 }
-                router.navigateTo(Screens.usersBioFragment())
             }
 
             is RegistrationAction.Login -> {
