@@ -93,7 +93,7 @@
         style="@style/MainButtonStyle"
         android:background="@drawable/rounded_btn_corner"
         android:fontFamily="@font/poppins_extrabold"
-        android:text="@string/registration" />
+        android:text="@string/login" />
 
     <LinearLayout
         android:layout_width="match_parent"

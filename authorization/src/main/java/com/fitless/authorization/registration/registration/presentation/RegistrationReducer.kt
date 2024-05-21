@@ -1,6 +1,12 @@
 package com.fitless.authorization.registration.registration.presentation
 
 import com.fitless.authorization.navigationScreens.Screens
+import com.fitless.authorization.registration.registration.domain.model.UserDataModel
+import com.fitless.authorization.registration.registration.domain.usecase.SaveUserUseCase
+import com.fitless.authorization.registration.registration.domain.usecase.ValidEmail
+import com.fitless.authorization.registration.registration.domain.usecase.ValidName
+import com.fitless.authorization.registration.registration.domain.usecase.ValidPassword
+import com.fitless.authorization.registration.registration.domain.usecase.ValidSurname
 import com.fitless.core.architecture.BaseReducer
 import com.fitless.core.navigation.NavigationRouter
 import com.github.terrakok.cicerone.androidx.FragmentScreen
@@ -10,10 +16,15 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
  * This class contains validation logic for registration fields.
  */
 class RegistrationReducer(
-    private val router: NavigationRouter<FragmentScreen>
+    private val router: NavigationRouter<FragmentScreen>,
+    private val validName: ValidName,
+    private val validSurname: ValidSurname,
+    private val validEmail: ValidEmail,
+    private val validPassword: ValidPassword,
+    private val saveUser: SaveUserUseCase
+
 ) : BaseReducer<RegistrationState, RegistrationAction, RegistrationSideEffect>(
-    initialState = RegistrationState(name = "", surname = "",
-    email = "", password = "", policy = false, registered = false)
+    initialState = RegistrationState(registered = false)
 ) {
 
     /**
@@ -23,23 +34,8 @@ class RegistrationReducer(
     override fun submitAction(action: RegistrationAction) {
         when(action){
             is RegistrationAction.Register -> {
-                if(validName(action.name) && validSurname(action.surname) && validEmail(action.email) && validPassword(action.password)){
-                    postState { state ->
-                        state.copy(
-                            name = state.name,
-                            surname = state.surname,
-                            email = state.email,
-                            password = state.password,
-                            policy = state.policy,
-                            registered = state.registered
-                        )
-                    }
-                    router.navigateTo(Screens.usersBioFragment())
-                }else{
-                    postSideEffect(RegistrationSideEffect.EmptyFields("Empty Fields"))
-                }
+                register(action)
             }
-
             is RegistrationAction.Login -> {
                 router.navigateTo(Screens.loginFragment())
             }
@@ -48,41 +44,41 @@ class RegistrationReducer(
 
     }
 
-    /**
-     * Validates the name field.
-     * @param name The name to be validated.
-     * @return True if the name is not empty, false otherwise.
-     */
-    private fun validName(name: String): Boolean{
-        return name.isNotEmpty()
-    }
+    private fun register(data: RegistrationAction.Register){
+        val nameStatus = validName(data.name)
+        val surnameStatus = validSurname(data.surname)
+        val emailStatus = validEmail(data.email)
+        val passwordStatus = validPassword(data.password)
 
-    /**
-     * Validates the surname field.
-     * @param surname The surname to be validated.
-     * @return True if the surname is not empty, false otherwise.
-     */
-    private fun validSurname(surname: String): Boolean{
-        return surname.isNotEmpty()
-    }
+        val isError = listOf(nameStatus, surnameStatus, emailStatus, passwordStatus).any{
+            it != null
+        }
 
-    /**
-     * Validates the email field.
-     * @param email The email to be validated.
-     * @return True if the email matches the regex pattern, false otherwise.
-     */
-    private fun validEmail(email: String): Boolean{
-        val emailRegex = Regex("^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,})+\$")
-        return emailRegex.matches(email)
-    }
+        if(isError){
+            postState {
+                it.copy(
+                    invalidName = nameStatus,
+                    invalidSurname = surnameStatus,
+                    invalidEmail = emailStatus,
+                    invalidPassword = passwordStatus
+                )
+            }
+        }else{
+            launch {
+                saveUser(UserDataModel(data.name, data.surname, data.email, data.password, data.policy))
+                router.navigateTo(Screens.usersBioFragment())
+            }
+            postState {
+                it.copy(
+                    invalidName = null,
+                    invalidSurname = null,
+                    invalidEmail = null,
+                    invalidPassword = null,
+                    registered = true
+                )
+            }
+        }
 
-    /**
-     * Validates the password field.
-     * @param password The password to be validated.
-     * @return True if the password length is greater than 3 characters, false otherwise.
-     */
-    private fun validPassword(password: String): Boolean{
-        return password.length > 3
     }
 
 }

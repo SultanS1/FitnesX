@@ -17,8 +17,12 @@ sealed interface RegistrationAction: BaseAction {
      * @property registered Indicates whether the user has been successfully registered.
      */
     data class Register(
-        val name: String, val surname: String, val email: String,
-        val password: String, val policy: Boolean, val registered: Boolean
+        val name: String,
+        val surname: String,
+        val email: String,
+        val password: String,
+        val policy: Boolean,
+        val registered: Boolean
     ): RegistrationAction
 
     /**

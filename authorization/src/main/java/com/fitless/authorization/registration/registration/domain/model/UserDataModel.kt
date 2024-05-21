@@ -5,5 +5,5 @@ data class UserDataModel(
     val surname: String,
     val email: String,
     val password: String,
-    val privacy: Boolean
+    val policy: Boolean
 )
