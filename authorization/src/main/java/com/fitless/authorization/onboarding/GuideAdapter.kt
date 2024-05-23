@@ -50,8 +50,7 @@ class GuideAdapter: RecyclerView.Adapter<GuideAdapter.ViewHolder>() {
      * @param position The position of the item in the list.
      */
     override fun onBindViewHolder(holder: GuideAdapter.ViewHolder, position: Int) {
-        val getItemCount = guideList.count()
-        holder.bind(guideList[getItemCount])
+        holder.bind(guideList[position])
     }
 
     /**

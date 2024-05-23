@@ -1,4 +1,4 @@
-package com.fitless.common
+package com.fitless.common.userData
 
 import kotlinx.serialization.Serializable
 

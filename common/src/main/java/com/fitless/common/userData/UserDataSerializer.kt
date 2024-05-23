@@ -1,4 +1,4 @@
-package com.fitless.common
+package com.fitless.common.userData
 
 import androidx.datastore.core.Serializer
 import kotlinx.serialization.SerializationException

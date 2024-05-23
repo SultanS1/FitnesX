@@ -1,9 +1,12 @@
 package com.fitless.authorization.registration.registration.data.repository
 
+import android.util.Log
 import androidx.datastore.core.DataStore
 import com.fitless.authorization.registration.registration.domain.model.UserDataModel
 import com.fitless.authorization.registration.registration.domain.repository.RegistrationRepository
-import com.fitless.common.UserData
+import com.fitless.common.userData.UserData
+import kotlinx.coroutines.flow.first
+
 /**
  * Implementation of the [RegistrationRepository] interface responsible for saving user data.
  */
