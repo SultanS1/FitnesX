@@ -1,12 +1,12 @@
 package com.fitless.authorization.registration.registration.presentation
 
 import com.fitless.authorization.navigationScreens.Screens
+import com.fitless.authorization.registration.registration.domain.model.PasswordStatus
 import com.fitless.authorization.registration.registration.domain.model.UserDataModel
+import com.fitless.authorization.registration.registration.domain.usecase.ConfirmValidationsUseCase
 import com.fitless.authorization.registration.registration.domain.usecase.SaveUserUseCase
-import com.fitless.authorization.registration.registration.domain.usecase.ValidEmail
-import com.fitless.authorization.registration.registration.domain.usecase.ValidName
-import com.fitless.authorization.registration.registration.domain.usecase.ValidPassword
-import com.fitless.authorization.registration.registration.domain.usecase.ValidSurname
+import com.fitless.common.validation.ValidEmailUseCase
+import com.fitless.common.validation.ValidTextUseCase
 import com.fitless.core.architecture.BaseReducer
 import com.fitless.core.navigation.NavigationRouter
 import com.github.terrakok.cicerone.androidx.FragmentScreen
@@ -17,10 +17,9 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
  */
 class RegistrationReducer(
     private val router: NavigationRouter<FragmentScreen>,
-    private val validName: ValidName,
-    private val validSurname: ValidSurname,
-    private val validEmail: ValidEmail,
-    private val validPassword: ValidPassword,
+    private val validTextUseCase: ValidTextUseCase,
+    private val validEmailUseCase: ValidEmailUseCase,
+    private val confirmValidationsUseCase: ConfirmValidationsUseCase,
     private val saveUser: SaveUserUseCase
 
 ) : BaseReducer<RegistrationState, RegistrationAction, RegistrationSideEffect>(
@@ -45,16 +44,12 @@ class RegistrationReducer(
     }
 
     private fun register(data: RegistrationAction.Register){
-        val nameStatus = validName(data.name)
-        val surnameStatus = validSurname(data.surname)
-        val emailStatus = validEmail(data.email)
-        val passwordStatus = validPassword(data.password)
+        val nameStatus = validTextUseCase(data.name)
+        val surnameStatus = validTextUseCase(data.surname)
+        val emailStatus = validEmailUseCase(data.email)
+        val passwordStatus = if (data.password.length < 6) PasswordStatus.TOO_SHORT else PasswordStatus.OK
 
-        val isError = listOf(nameStatus, surnameStatus, emailStatus, passwordStatus).any{
-            it != null
-        }
-
-        if(isError){
+        if(!confirmValidationsUseCase(nameStatus, surnameStatus, emailStatus, passwordStatus)){
             postState {
                 it.copy(
                     invalidName = nameStatus,
@@ -67,15 +62,6 @@ class RegistrationReducer(
             launch {
                 saveUser(UserDataModel(data.name, data.surname, data.email, data.password, data.policy))
                 router.navigateTo(Screens.usersBioFragment())
-            }
-            postState {
-                it.copy(
-                    invalidName = null,
-                    invalidSurname = null,
-                    invalidEmail = null,
-                    invalidPassword = null,
-                    registered = true
-                )
             }
         }
 

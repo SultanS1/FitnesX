@@ -12,7 +12,7 @@ import com.fitless.authorization.databinding.GuideItemBinding
  */
 class GuideAdapter: RecyclerView.Adapter<GuideAdapter.ViewHolder>() {
 
-    private var guideList: MutableList<GuideItem> = mutableListOf()
+    private var items: MutableList<GuideItem> = mutableListOf()
 
     /**
      * ViewHolder class for the GuideAdapter.
@@ -50,7 +50,7 @@ class GuideAdapter: RecyclerView.Adapter<GuideAdapter.ViewHolder>() {
      * @param position The position of the item in the list.
      */
     override fun onBindViewHolder(holder: GuideAdapter.ViewHolder, position: Int) {
-        holder.bind(guideList[position])
+        holder.bind(items[position])
     }
 
     /**
@@ -58,7 +58,7 @@ class GuideAdapter: RecyclerView.Adapter<GuideAdapter.ViewHolder>() {
      * @return The number of items.
      */
     override fun getItemCount(): Int {
-        return guideList.size
+        return items.size
     }
 
     /**
@@ -66,8 +66,8 @@ class GuideAdapter: RecyclerView.Adapter<GuideAdapter.ViewHolder>() {
      * @param newList The new list of guide items.
      */
     fun setList(newList: List<GuideItem>){
-        guideList.clear()
-        guideList.addAll(newList)
+        items.clear()
+        items.addAll(newList)
         notifyItemChanged(itemCount)
     }
 

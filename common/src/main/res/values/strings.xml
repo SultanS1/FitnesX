@@ -47,5 +47,9 @@
     <string name="welcome_stefani">Welcome, Stefani</string>
     <string name="you_are_all_set_now_let_s_reach_your_goals_together_with_us">You are all set now, let’s reach your goals together with us</string>
     <string name="go_to_home">Go to Home</string>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 
 </resources>

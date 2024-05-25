@@ -51,15 +51,6 @@ class UserBioReducer(
                 )
             }
         }else{
-            postState {
-                it.copy(
-                    genderEmpty = null,
-                    birthdateEmpty = null,
-                    weightEmpty = null,
-                    heightEmpty = null
-                )
-            }
-
             launch {
                 saveUserBio.invoke(
                     UserBioModel(

@@ -44,7 +44,7 @@ class UsersBioFragment :
         binding.genderEditTxt.setAdapter(
             ArrayAdapter(requireContext(),
                 R.layout.gender_drop_down,
-                listOf("Male", "Female")
+                resources.getStringArray(com.fitless.common.R.array.gender)
             )
         )
 

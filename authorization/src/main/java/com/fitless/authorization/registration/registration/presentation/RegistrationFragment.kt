@@ -1,17 +1,14 @@
 package com.fitless.authorization.registration.registration.presentation
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.fitless.authorization.R
 import com.fitless.authorization.databinding.FragmentRegistrationBinding
+import com.fitless.authorization.registration.registration.domain.model.PasswordStatus
+import com.fitless.common.validation.EmailStatus
+import com.fitless.common.validation.TextStatus
 import com.fitless.core.view.BaseFragment
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -27,17 +24,17 @@ class RegistrationFragment :
 
     override fun render(state: RegistrationState) {
 
-        if (state.invalidName != null){
-            binding.firstNameTxt.error = state.invalidName
+        if (state.invalidName != TextStatus.OK){
+            binding.firstNameTxt.error = state.invalidName.toString()
         }
-        if (state.invalidSurname != null){
-            binding.lastNameTxt.error = state.invalidSurname
+        if (state.invalidSurname != TextStatus.OK){
+            binding.lastNameTxt.error = state.invalidSurname.toString()
         }
-        if (state.invalidEmail != null){
-            binding.emailTxt.error = state.invalidEmail
+        if (state.invalidEmail != EmailStatus.OK){
+            binding.emailTxt.error = state.invalidEmail.toString()
         }
-        if (state.invalidPassword != null){
-            binding.passwordTxt.error = state.invalidPassword
+        if (state.invalidPassword != PasswordStatus.OK){
+            binding.passwordTxt.error = state.invalidPassword.toString()
         }
 
     }

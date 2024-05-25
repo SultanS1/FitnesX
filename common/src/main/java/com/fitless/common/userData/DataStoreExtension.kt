@@ -6,10 +6,10 @@ import androidx.datastore.dataStore
 
 val Context.userDataStore: DataStore<UserData> by dataStore(
     fileName = "user_data.json",
-    serializer = UserDataSerializer()
+    serializer = UserDataSerializer
 )
 
 val Context.userBioDataStore: DataStore<UserBio> by dataStore(
     fileName = "user_bio.json",
-    serializer = UserBioSerializer()
+    serializer = UserBioSerializer
 )
