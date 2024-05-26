@@ -14,7 +14,7 @@ class OnBoardingReducer(
 	private val router: NavigationRouter<FragmentScreen>,
 ) : BaseReducer<OnBoardingViewState, OnBoardingAction, OnBoardingSideEffect>(
 	initialState = OnBoardingViewState(
-		onboardingPassed = 1, progress = 25
+		onboardingPassed = 1, progress = 0
 	)
 ) {
 
