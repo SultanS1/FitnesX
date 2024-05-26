@@ -10,30 +10,28 @@ import com.fitless.authorization.registration.registration.presentation.Registra
 import com.fitless.authorization.registration.usersBio.data.repository.UserBioRepositoryImpl
 import com.fitless.authorization.registration.usersBio.domain.repository.UserBioRepository
 import com.fitless.authorization.registration.usersBio.domain.usecase.SaveUserBioUseCase
-import com.fitless.authorization.registration.usersBio.domain.usecase.ValidBirthDate
-import com.fitless.authorization.registration.usersBio.domain.usecase.ValidGender
-import com.fitless.authorization.registration.usersBio.domain.usecase.ValidHeight
-import com.fitless.authorization.registration.usersBio.domain.usecase.ValidWeight
+import com.fitless.authorization.registration.usersBio.domain.usecase.ValidHeightUseCase
+import com.fitless.authorization.registration.usersBio.domain.usecase.ValidWeightUseCase
+import com.fitless.authorization.registration.usersBio.domain.usecase.ValidationConfirmUseCase
 import com.fitless.authorization.registration.usersBio.presentation.UserBioReducer
 import com.fitless.common.userData.DataStoreQualifiers
 import com.fitless.common.userData.FileStorage
 import com.fitless.common.userData.UserBio
 import com.fitless.common.userData.UserData
-import com.fitless.common.userData.userBioDataStore
-import com.fitless.common.userData.userDataStore
+import com.fitless.common.extensions.userBioDataStore
+import com.fitless.common.extensions.userDataStore
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import java.nio.file.FileStore
 
 
 val authModule = module {
 
     //registration
     single(named(DataStoreQualifiers.USER_DATA)){ androidContext().userDataStore }
-    single { FileStorage(get(named(DataStoreQualifiers.USER_DATA)), UserData) }
-    single <RegistrationRepository>{ RegistrationRepositoryImpl(get()) }
+    single(named(DataStoreQualifiers.USER_DATA)) { FileStorage(get(named(DataStoreQualifiers.USER_DATA)), UserData) }
+    single <RegistrationRepository>{ RegistrationRepositoryImpl(get(named(DataStoreQualifiers.USER_DATA))) }
     single { SaveUserUseCase(get()) }
     single { ValidTextUseCase() }
     single { ConfirmValidationsUseCase() }
@@ -50,21 +48,21 @@ val authModule = module {
 
     //user bio
     single(named(DataStoreQualifiers.USER_BIO)){ androidContext().userBioDataStore }
-    single { FileStorage(get(named(DataStoreQualifiers.USER_BIO)), UserBio) }
-    single <UserBioRepository>{ UserBioRepositoryImpl(get()) }
+    single(named(DataStoreQualifiers.USER_BIO)) { FileStorage(get(named(DataStoreQualifiers.USER_BIO)), UserBio) }
+    single <UserBioRepository>{ UserBioRepositoryImpl(get(named(DataStoreQualifiers.USER_BIO))) }
     single { SaveUserBioUseCase(get()) }
-    single { ValidGender() }
-    single { ValidBirthDate() }
-    single { ValidWeight() }
-    single { ValidHeight() }
+    single { ValidWeightUseCase() }
+    single { ValidHeightUseCase() }
+    single { ValidationConfirmUseCase() }
     viewModel {
         UserBioReducer(
             router = get(),
-            saveUserBio = get(),
-            validGender = get(),
-            validBirthDate = get(),
-            validWeight = get(),
-            validHeight = get()
+            saveUserBioUseCase = get(),
+            validGenderUseCase = get(),
+            validBirthDateUseCase = get(),
+            validWeightUseCase = get(),
+            validHeightUseCase = get(),
+            validationConfirmUseCase = get()
         )
     }
 

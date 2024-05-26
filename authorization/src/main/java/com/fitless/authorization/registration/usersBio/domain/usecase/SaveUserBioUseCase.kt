@@ -5,8 +5,7 @@ import com.fitless.authorization.registration.usersBio.domain.repository.UserBio
 
 class SaveUserBioUseCase(private val repository: UserBioRepository) {
 
-    suspend operator fun invoke(userBioModel: UserBioModel){
-        repository.saveUserBio(userBioModel)
-    }
+    suspend operator fun invoke(userBioModel: UserBioModel) = repository.saveUserBio(userBioModel)
+
 
 }

@@ -7,6 +7,10 @@ import android.widget.ArrayAdapter
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.fitless.authorization.R
 import com.fitless.authorization.databinding.FragmentUsersBioBinding
+import com.fitless.authorization.registration.usersBio.domain.model.HeightStatus
+import com.fitless.authorization.registration.usersBio.domain.model.WeightStatus
+import com.fitless.common.extensions.afterTextChanged
+import com.fitless.common.validation.TextStatus
 import com.fitless.core.view.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
@@ -21,20 +25,20 @@ class UsersBioFragment :
     override val reducer: UserBioReducer by viewModel()
 
     override fun render(state: UserBioState) {
-        binding.weightUnit.text = state.weightUnit
-        binding.heightUnit.text = state.heightUnit
+        binding.weightUnit.text = state.weightUnit.toString()
+        binding.heightUnit.text = state.heightUnit.toString()
 
-        if(state.genderEmpty != null){
-            binding.genderEditTxt.error = state.genderEmpty
+        if(state.genderEmpty != TextStatus.OK){
+            binding.genderEditTxt.error = state.genderEmpty.toString()
         }
-        if (state.birthdateEmpty != null){
-            binding.dataOfBirthEditTxt.error = state.birthdateEmpty
+        if (state.birthdateEmpty != TextStatus.OK){
+            binding.dataOfBirthEditTxt.error = state.birthdateEmpty.toString()
         }
-        if (state.weightEmpty != null){
-            binding.weightEditTxt.error = state.weightEmpty
+        if (state.weightEmpty != WeightStatus.OK){
+            binding.weightEditTxt.error = state.weightEmpty.toString()
         }
-        if(state.heightEmpty != null){
-            binding.heightEditTxt.error = state.heightEmpty
+        if(state.heightEmpty != HeightStatus.OK){
+            binding.heightEditTxt.error = state.heightEmpty.toString()
         }
 
     }
@@ -48,10 +52,13 @@ class UsersBioFragment :
             )
         )
 
+        setEditTextListeners()
+
         setClickListeners()
     }
 
     private fun setClickListeners(){
+
         binding.dataOfBirthEditTxt.setOnClickListener{ datePickerDialog() }
 
         binding.weightUnit.setOnClickListener {
@@ -66,21 +73,28 @@ class UsersBioFragment :
             )
         }
 
-        binding.nextBtn.setOnClickListener { submitData() }
+        binding.nextBtn.setOnClickListener { reducer.submitAction(UserBioAction.SubmitBio) }
 
     }
 
-    private fun submitData(){
-        reducer.submitAction(
-            UserBioAction.SubmitBio(
-                gender = binding.genderEditTxt.text.toString(),
-                birthdate = binding.dataOfBirthEditTxt.text.toString(),
-                weight = binding.weightEditTxt.text.toString(),
-                weightUnit = binding.weightUnit.text.toString(),
-                height = binding.heightEditTxt.text.toString(),
-                heightUnit = binding.heightUnit.text.toString()
-            )
-        )
+    private fun setEditTextListeners(){
+
+        binding.genderEditTxt.afterTextChanged {
+            reducer.submitAction(UserBioAction.SendGender(it))
+        }
+
+        binding.dataOfBirthEditTxt.afterTextChanged {
+            reducer.submitAction(UserBioAction.SendBirthDate(it))
+        }
+
+        binding.weightEditTxt.afterTextChanged {
+            reducer.submitAction(UserBioAction.SendWeight(it))
+        }
+
+        binding.heightEditTxt.afterTextChanged {
+            reducer.submitAction(UserBioAction.SendHeight(it))
+        }
+
     }
 
     private fun datePickerDialog(){
@@ -88,7 +102,7 @@ class UsersBioFragment :
         val datePicker = DatePickerDialog(
             requireContext(), 
             android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-            DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+            { _, year, month, dayOfMonth ->
                 val selectDate = Calendar.getInstance()
                 selectDate.set(Calendar.YEAR, year)
                 selectDate.set(Calendar.MONTH, month)

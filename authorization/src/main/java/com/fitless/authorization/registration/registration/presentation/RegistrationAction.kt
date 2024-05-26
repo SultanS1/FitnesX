@@ -8,22 +8,34 @@ import com.fitless.core.architecture.BaseAction
 sealed interface RegistrationAction: BaseAction {
 
     /**
-     * Action to register a user with the provided details.
-     * @property name The user's first name.
-     * @property surname The user's last name.
-     * @property email The user's email address.
-     * @property password The user's password.
-     * @property policy Indicates whether the user has agreed to the privacy policy.
-     * @property registered Indicates whether the user has been successfully registered.
+     * Action to send name each time when user enters new char
      */
-    data class Register(
-        val name: String,
-        val surname: String,
-        val email: String,
-        val password: String,
-        val policy: Boolean,
-        val registered: Boolean
-    ): RegistrationAction
+    data class SendName(val name: String): RegistrationAction
+
+    /**
+     * Action to send surname each time when user enters new char
+     */
+    data class SendSurname(val surname: String): RegistrationAction
+
+    /**
+     * Action to send email each time when user enters new char
+     */
+    data class SendEmail(val email: String): RegistrationAction
+
+    /**
+     * Action to send password each time when user enters new char
+     */
+    data class SendPassword(val password: String): RegistrationAction
+
+    /**
+     * Action to send state of Policy agreement
+     */
+    data class SendPolicyState(val policy: Boolean): RegistrationAction
+
+    /**
+     * Action to register a user with the provided details.
+     */
+    data object Register: RegistrationAction
 
     /**
      * Action to initiate the login process.

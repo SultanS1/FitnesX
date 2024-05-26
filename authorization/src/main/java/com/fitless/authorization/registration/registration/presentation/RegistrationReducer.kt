@@ -32,18 +32,24 @@ class RegistrationReducer(
      */
     override fun submitAction(action: RegistrationAction) {
         when(action){
-            is RegistrationAction.Register -> {
-                register(action)
-            }
-            is RegistrationAction.Login -> {
-                router.navigateTo(Screens.loginFragment())
-            }
+            is RegistrationAction.Register -> { register(stateValue) }
 
+            is RegistrationAction.Login -> { router.navigateTo(Screens.loginFragment()) }
+
+            is RegistrationAction.SendEmail -> postState { it.copy(email = action.email) }
+
+            is RegistrationAction.SendName -> postState { it.copy(name = action.name) }
+
+            is RegistrationAction.SendPassword -> postState { it.copy(password = action.password) }
+
+            is RegistrationAction.SendSurname -> postState { it.copy(surname = action.surname) }
+
+            is RegistrationAction.SendPolicyState -> postState { it.copy(policy = action.policy) }
         }
 
     }
 
-    private fun register(data: RegistrationAction.Register){
+    private fun register(data: RegistrationState){
         val nameStatus = validTextUseCase(data.name)
         val surnameStatus = validTextUseCase(data.surname)
         val emailStatus = validEmailUseCase(data.email)

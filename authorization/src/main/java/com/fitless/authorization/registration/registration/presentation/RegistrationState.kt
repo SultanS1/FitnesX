@@ -14,5 +14,10 @@ data class RegistrationState(
     val invalidSurname: TextStatus = TextStatus.OK,
     val invalidEmail: EmailStatus = EmailStatus.OK,
     val invalidPassword: PasswordStatus = PasswordStatus.OK,
-    val registered: Boolean
+    val registered: Boolean,
+    val name: String = "",
+    val surname: String = "",
+    val email: String = "",
+    val password: String = "",
+    val policy: Boolean = false
 ): BaseState

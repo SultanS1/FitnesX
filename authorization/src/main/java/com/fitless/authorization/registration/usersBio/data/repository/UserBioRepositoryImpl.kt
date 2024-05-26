@@ -13,14 +13,6 @@ import com.fitless.common.userData.UserBio
 class UserBioRepositoryImpl(
     private val dataStore: FileStorage<UserBio>
 ): UserBioRepository {
-
-    /**
-     * Suspended function responsible for saving user bio data.
-     * This function updates the data stored in [FileStorage] with the provided user bio model.
-     *
-     * @param userBioModel The data model containing the user bio data to be saved.
-     * @throws IOException if there is an error writing to the data store.
-     */
     override suspend fun saveUserBio(userBioModel: UserBioModel) {
         dataStore.saveData {
             it.copy(
