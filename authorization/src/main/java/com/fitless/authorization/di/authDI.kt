@@ -1,5 +1,6 @@
 package com.fitless.authorization.di
 
+import com.fitless.authorization.onboarding.OnboardingPageReducer
 import com.fitless.authorization.registration.registration.data.repository.RegistrationRepositoryImpl
 import com.fitless.authorization.registration.registration.domain.repository.RegistrationRepository
 import com.fitless.authorization.registration.registration.domain.usecase.ConfirmValidationsUseCase
@@ -63,6 +64,13 @@ val authModule = module {
             validWeightUseCase = get(),
             validHeightUseCase = get(),
             validationConfirmUseCase = get()
+        )
+    }
+
+    //onboarding
+    viewModel {
+        OnboardingPageReducer(
+            router = get()
         )
     }
 

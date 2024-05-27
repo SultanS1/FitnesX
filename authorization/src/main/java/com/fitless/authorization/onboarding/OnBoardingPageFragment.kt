@@ -1,22 +1,25 @@
 package com.fitless.authorization.onboarding
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
-import androidx.viewpager2.widget.ViewPager2
-import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.fitless.authorization.R
 import com.fitless.authorization.databinding.FragmentOnBoardingPageBinding
+import com.fitless.core.view.BaseFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.math.abs
+import kotlin.math.max
 
-class OnBoardingPageFragment : Fragment(R.layout.fragment_on_boarding_page) {
+class OnBoardingPageFragment :
+    BaseFragment<OnboardingPageState, OnboardingPageAction, OnboardingPageSideEffect,
+            FragmentOnBoardingPageBinding>(R.layout.fragment_on_boarding_page) {
 
-    private val binding: FragmentOnBoardingPageBinding by viewBinding(CreateMethod.INFLATE)
+    override val binding: FragmentOnBoardingPageBinding by viewBinding()
+
+    override val reducer: OnboardingPageReducer by viewModel()
 
     private val guideAdapter: GuideAdapter by lazy { GuideAdapter() }
 
@@ -24,25 +27,30 @@ class OnBoardingPageFragment : Fragment(R.layout.fragment_on_boarding_page) {
 
     //test
     private val testData: List<GuideItem> = listOf(
-        GuideItem("Improve Shape", "I have a low amount of body fat and need / want to build more muscle", R.drawable.ic_guide1),
-        GuideItem("Lean & Tone", "I’m “skinny fat”. look thin but have no shape. I want to add learn muscle in the right way", R.drawable.ic_guide2),
-        GuideItem("Lose a Fat", "I have over 20 lbs to lose. I want to drop all this fat and gain muscle mass", R.drawable.ic_guide3),
+        GuideItem("Improve Shape",
+            "I have a low amount of body fat and need / want to build more muscle",
+            R.drawable.ic_guide1),
+        GuideItem("Lean & Tone",
+            "I’m “skinny fat”. look thin but have no shape. I want to add learn muscle in the right way",
+            R.drawable.ic_guide2),
+        GuideItem("Lose a Fat",
+            "I have over 20 lbs to lose. I want to drop all this fat and gain muscle mass",
+            R.drawable.ic_guide3),
         )
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return binding.root
+    override fun render(state: OnboardingPageState) {
+        adapterSetUp(state.step)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapterSetUp()
-
+        binding.confirmButton.setOnClickListener {
+            reducer.submitAction(OnboardingPageAction.Confirm)
+        }
     }
 
-    private fun adapterSetUp(){
+    private fun adapterSetUp(step: Int){
+        binding.guideViewPager.isUserInputEnabled = false
         binding.guideViewPager.adapter = guideAdapter
         guideAdapter.setList(testData)
 
@@ -52,23 +60,21 @@ class OnBoardingPageFragment : Fragment(R.layout.fragment_on_boarding_page) {
         binding.guideViewPager.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
 
         pageTransformer.addTransformer(MarginPageTransformer(20))
-        pageTransformer.addTransformer(object :ViewPager2.PageTransformer{
-            override fun transformPage(page: View, position: Float) {
-                val r = 1 - Math.abs(position)
-                page.scaleY = (0.96f + r * 0.05f)
+        pageTransformer.addTransformer { page, position ->
+            val r = 1 - abs(position)
+            page.scaleY = (0.96f + r * 0.05f)
 
-                val absPosition = Math.abs(position)
-                page.apply {
-                    if (absPosition >= 1) {
-                        alpha = 0.5f
-                    } else {
-                        alpha = Math.max(0.5f, 1 - absPosition)
-                    }
+            val absPosition = abs(position)
+            page.apply {
+                alpha = if (absPosition >= 1) {
+                    0.5f
+                } else {
+                    max(0.5f, 1 - absPosition)
                 }
-
             }
-        })
+        }
 
+        binding.guideViewPager.currentItem = step
         binding.guideViewPager.setPageTransformer(pageTransformer)
 
     }
