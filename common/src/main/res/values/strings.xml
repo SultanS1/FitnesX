@@ -51,5 +51,6 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+    <string name="incorrect_input">Please, enter correct email address and password</string>
 
 </resources>

@@ -1,5 +1,9 @@
 package com.fitless.authorization.di
 
+import com.fitless.authorization.login.data.repository.LoginRepositoryImpl
+import com.fitless.authorization.login.domain.repository.LoginRepository
+import com.fitless.authorization.login.domain.usecase.LoginUseCase
+import com.fitless.authorization.login.presentation.LoginReducer
 import com.fitless.authorization.onboarding.OnboardingPageReducer
 import com.fitless.authorization.registration.registration.data.repository.RegistrationRepositoryImpl
 import com.fitless.authorization.registration.registration.domain.repository.RegistrationRepository
@@ -71,6 +75,18 @@ val authModule = module {
     viewModel {
         OnboardingPageReducer(
             router = get()
+        )
+    }
+
+
+    //login
+    single <LoginRepository>{ LoginRepositoryImpl(get(named(DataStoreQualifiers.USER_DATA))) }
+    single { LoginUseCase(get()) }
+    viewModel {
+        LoginReducer(
+            router = get(),
+            validEmailUseCase = get(),
+            loginUseCase = get()
         )
     }
 
