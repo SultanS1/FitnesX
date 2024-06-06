@@ -21,8 +21,8 @@ class LoginFragment :
         if (state.validationMessage.isNotEmpty()){
             Toast.makeText(requireContext(), state.validationMessage, Toast.LENGTH_SHORT).show()
         }
-        if(state.loginResponse == LoginResponse.INCORRECT_CREDENTIALS){
-            Toast.makeText(requireContext(), state.loginResponse.toString(), Toast.LENGTH_SHORT).show()
+        if(state.loginValidationStatus == LoginValidationStatus.INCORRECT_CREDENTIALS){
+            Toast.makeText(requireContext(), state.loginValidationStatus.toString(), Toast.LENGTH_SHORT).show()
         }
     }
 

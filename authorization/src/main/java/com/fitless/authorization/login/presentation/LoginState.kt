@@ -4,7 +4,7 @@ import com.fitless.core.architecture.BaseState
 
 data class LoginState(
     val validationMessage: String = "",
-    val loginResponse: LoginResponse,
+    val loginValidationStatus: LoginValidationStatus,
     val email: String = "",
     val password: String = ""
 ): BaseState

@@ -15,7 +15,7 @@ class LoginReducer(
     private val loginUseCase: LoginUseCase,
 ): BaseReducer<LoginState, LoginAction, LoginSideEffect>(
     initialState = LoginState(
-        loginResponse = LoginResponse.LOADING,
+        loginValidationStatus = LoginValidationStatus.LOADING,
     )
 ) {
 
@@ -38,10 +38,10 @@ class LoginReducer(
             launch {
                 val response = loginUseCase.invoke(LoginModel(data.email, data.password))
                 if (response) {
-                    postState { it.copy(loginResponse = LoginResponse.OK) }
+                    postState { it.copy(loginValidationStatus = LoginValidationStatus.OK) }
                     router.navigateTo(Screens.successFragment())
                 } else {
-                    postState { it.copy(loginResponse = LoginResponse.INCORRECT_CREDENTIALS) }
+                    postState { it.copy(loginValidationStatus = LoginValidationStatus.INCORRECT_CREDENTIALS) }
                 }
             }
         }else{

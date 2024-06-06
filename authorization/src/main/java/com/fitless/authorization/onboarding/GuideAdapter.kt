@@ -57,9 +57,7 @@ class GuideAdapter: RecyclerView.Adapter<GuideAdapter.ViewHolder>() {
      * Gets the number of items in the list.
      * @return The number of items.
      */
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    override fun getItemCount() = items.count()
 
     /**
      * Sets a new list of guide items and notifies the adapter of the change.
