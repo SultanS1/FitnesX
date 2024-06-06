@@ -78,7 +78,6 @@ val authModule = module {
         )
     }
 
-
     //login
     single <LoginRepository>{ LoginRepositoryImpl(get(named(DataStoreQualifiers.USER_DATA))) }
     single { LoginUseCase(get()) }
