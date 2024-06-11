@@ -67,5 +67,10 @@ abstract class BaseReducer<STATE : BaseState, Action : BaseAction, SE: BaseSideE
 	protected fun launch(operation: suspend () -> Unit) = coroutineScope.launch {
 		operation()
 	}
+
+	override fun onCleared() {
+		super.onCleared()
+		coroutineScope.cancel()
+	}
 	
 }
