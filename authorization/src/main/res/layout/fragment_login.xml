@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:paddingHorizontal="@dimen/_30dp"
-    tools:context=".login.LoginFragment">
+    tools:context=".login.presentation.LoginFragment">
 
     <TextView
         android:layout_width="wrap_content"
@@ -56,6 +56,7 @@
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintEnabled="false"
+        app:endIconMode="password_toggle"
         android:background="@drawable/text_input_layout_rounded">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -93,7 +94,7 @@
         style="@style/MainButtonStyle"
         android:background="@drawable/rounded_btn_corner"
         android:fontFamily="@font/poppins_extrabold"
-        android:text="@string/registration" />
+        android:text="@string/login" />
 
     <LinearLayout
         android:layout_width="match_parent"

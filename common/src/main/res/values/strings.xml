@@ -29,8 +29,11 @@
     <string name="choose_gender">Choose Gender</string>
     <string name="date_of_birth">Date of Birth</string>
     <string name="your_weight">Your weight</string>
+    <string name="your_height">Your height</string>
     <string name="kg">KG</string>
     <string name="cm">CM</string>
+    <string name="lb">LB</string>
+    <string name="ft">FT</string>
     <string name="next"><![CDATA[Next >]]></string>
 
     <string name="what_is_your_goal">What is your goal ?</string>
@@ -44,5 +47,10 @@
     <string name="welcome_stefani">Welcome, Stefani</string>
     <string name="you_are_all_set_now_let_s_reach_your_goals_together_with_us">You are all set now, let’s reach your goals together with us</string>
     <string name="go_to_home">Go to Home</string>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string name="incorrect_input">Please, enter correct email address and password</string>
 
 </resources>

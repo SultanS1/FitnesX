@@ -23,12 +23,34 @@ class OnboardingFragment :
 	override val reducer: OnBoardingReducer by viewModel()
 	override fun render(state: OnBoardingViewState) {
 		binding.progressBar.progress = state.progress
+		onboardInfo(state.onboardingPassed)
 	}
 	
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		binding.nextBtn.setOnClickListener {
 			reducer.submitAction(action = OnBoardingAction.OnBoardingStep)
+		}
+	}
+
+	private fun onboardInfo(onboardingPassed: Int){
+		when(onboardingPassed){
+			1 -> binding.apply {
+				titleImg.setImageResource(R.drawable.ic_onboarding1)
+				descriptionTxt.text = resources.getText(com.fitless.common.R.string.onboarding_text1)
+			}
+			2 -> binding.apply {
+				titleImg.setImageResource(R.drawable.ic_onboarding2)
+				descriptionTxt.text = resources.getText(com.fitless.common.R.string.onboarding_text2)
+			}
+			3 -> binding.apply {
+				titleImg.setImageResource(R.drawable.ic_onboarding3)
+				descriptionTxt.text = resources.getText(com.fitless.common.R.string.onboarding_text3)
+			}
+			4 -> binding.apply {
+				titleImg.setImageResource(R.drawable.ic_onboarding4)
+				descriptionTxt.text = resources.getText(com.fitless.common.R.string.onboarding_text4)
+			}
 		}
 	}
 }

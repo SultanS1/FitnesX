@@ -97,6 +97,7 @@
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:hintEnabled="false"
+        app:endIconMode="password_toggle"
         android:background="@drawable/text_input_layout_rounded">
 
         <com.google.android.material.textfield.TextInputEditText

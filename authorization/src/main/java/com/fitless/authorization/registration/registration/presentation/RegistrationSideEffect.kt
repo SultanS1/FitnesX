@@ -11,6 +11,6 @@ sealed interface RegistrationSideEffect: BaseSideEffect {
      * Indicates that there are empty fields in the registration form.
      * @property message A message describing the empty fields.
      */
-    data class EmptyFields(val message: String): RegistrationSideEffect
+    data class UserAlreadyExists(val message: String): RegistrationSideEffect
 
 }

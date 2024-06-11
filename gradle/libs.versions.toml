@@ -40,3 +40,4 @@ protoStore = { module = "androidx.datastore:datastore", version.ref = "protoStor
 androidApplication = { id = "com.android.application", version.ref = "apv"}
 jetBrainsKotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin"}
 library = { id = "com.android.library", version.ref = "library"}
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"}
